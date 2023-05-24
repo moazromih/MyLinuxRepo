@@ -1,0 +1,6 @@
+name = input("What is your name?")
+age = input("How old are you?")
+faculty = input("What is your major?")
+print("Name :",name)
+print("Age :",age)
+print("Faculty :",faculty)

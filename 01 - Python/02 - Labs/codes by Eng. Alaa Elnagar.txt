@@ -1,0 +1,1155 @@
+By C function How to check if string mirrored or not?
+I tried this but didn't work:
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void check_string_mirrored(char *str, int size) {
+    int i;
+    int f = 1;
+    for (i = 0; i < size/2; i++) {
+        if (str[i] != str[size - 1 - i]) {
+            printf("string is not mirrored\n");
+            f = 0;
+            break;
+        }
+    }
+    if (f == 1)
+        printf("string is mirrored\n");
+}
+int main() {
+    char s[6] = "ARBBRA";
+    check_string_mirrored(s, 6);
+    return 0;
+
+}
+
+---------------------------------------------------------------------------------
+
+remove duplicate
+
+
+#include <stdio.h>
+int remove_duplicate(int arr[], int n)
+{
+
+  if (n == 0 || n == 1)
+    return n;
+
+  int temp[n];
+
+  int j = 0;
+  int i;
+  for (i = 0; i < n - 1; i++)
+    if (arr[i] != arr[i + 1])
+      temp[j++] = arr[i];
+  temp[j++] = arr[n - 1];
+
+  for (i = 0; i < j; i++)
+    arr[i] = temp[i];
+
+  return j;
+}
+
+---------------------------------------------------------------------------------
+atwal 3dad mn el ones mtkrar fe binary numb
+	
+	int numb1=0b00110111;
+ while(numb1 > 0)
+    {
+        numb1 = numb1 & (numb1 << 1);
+        i++;
+    }
+    printf("Result: %d",i);
+
+
+---------------------------------------------------------------------------------
+
+print 2D array
+
+#include <stdio.h>
+
+#define MAX 10
+
+int main()
+{
+    char grid[MAX][MAX];
+    int i,j,row,col;
+
+    printf("Please enter your grid size: ");
+    scanf("%d %d", &row, &col);
+
+
+    for (i = 0; i < row; i++) {
+        for (j = 0; j < col; j++) {
+            grid[i][j] = '.';^=y
+            printf("%c ", grid[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+---------------------------------------------------------------------------------
+
+C Code to swap 4-bits with the other 4-bits in byte
+unsigned char c;
+
+c = ((c & 0xf0) >> 4) | ((c & 0x0f) << 4);
+
+>>> Macro to Swap Nibbles in a Byte
+#define SwapNibbles(data) (((data & 0x0F)<<4) | ((data & 0xF0)>>4))
+
+>>> Macro to Swap Two Bytes
+#define SwapTwoBytes(data) (((data & 0x00FF)<<8) | ((data & 0xFF00)>>8))
+
+>>> Macro to Swap two numbers
+#define SWAP(x,y) (x^=y^=x^=y)
+
+---------------------------------------------------------------------------------
+
+c code to reverse the 8 bits in byte
+
+unsigned int reverseBits(unsigned int num) 
+{ 
+    unsigned int  NO_OF_BITS = sizeof(num) * 8; 
+    unsigned int reverse_num = 0, i; 
+  
+    for (i = 0; i < NO_OF_BITS; i++) 
+    { 
+        
+        if(num & (1 << i)) 
+            reverse_num |= (1 << ((NO_OF_BITS - 1) - i)); 
+    } 
+   
+    return reverse_num; 
+} 
+---------------------------------------------------------------------------------
+
+Fibonacci Series up to n terms
+#include <stdio.h>
+int main() {
+    int i, n, t1 = 0, t2 = 1, nextTerm;
+    printf("Enter the number of terms: ");
+    scanf("%d", &n);
+    printf("Fibonacci Series: ");
+
+    for (i = 1; i <= n; ++i) {
+        printf("%d, ", t1);
+        nextTerm = t1 + t2;
+        t1 = t2;
+        t2 = nextTerm;
+    }
+
+    return 0;
+}
+
+#include<stdio.h>
+ 
+int main()
+{
+    int f1=0,f2=1,f3,i=3,len;
+    printf("enter length of the  fibonacci series:");
+    scanf("%d",&len);
+    printf("%d\t%d",f1,f2); // It prints the starting two values
+    while(i<=len)           // checks the condition
+    {
+        f3=f1+f2;               // performs add operation on previous two  values
+        printf("\t%d",f3);      // It prints from third value to given length
+        f1=f2;
+        f2=f3;
+        i=i+1;                  // incrementing the i value by 1
+    }
+    return 0;
+}
+
+#include <stdio.h>
+
+long fibanacci(long n)
+{
+	if(n==0 || n==1)
+	{
+		/* the base value */
+		return n;
+	}
+	else
+	{ /* each element equals to the sum of the previous two elements */
+		return fibanacci(n-1) + fibanacci(n-2);
+	}
+}
+
+---------------------------------------------------------------------------------
+print binary
+
+void print_binary(unsigned char num)
+{
+    unsigned char i;
+    unsigned char mask=0x80;
+    unsigned char  NO_OF_BITS = sizeof(num) * 8;
+
+    printf("The Binary Representation of number %d is : ",num);
+
+    /*
+     * start looping from index n-1 to 0 and check every bit
+     * if it is equals to one print 1
+     * if it is zero print 0
+     */
+    for(i=0;i<NO_OF_BITS;i++)
+    {
+        ((num<<i) & mask) ? printf("1"):printf("0");
+    }
+
+    printf("\n");
+}
+  
+---------------------------------------------------------------------------------
+count no of ones 
+
+#include <stdio.h>
+
+int CountOnes(unsigned int Number)
+{
+	unsigned int mask=0x80000000;
+	unsigned int i;
+	int ones_count=0;
+
+	for(i=0;i<32;i++)
+	{
+		if((Number<<i) & mask)
+		{
+			++ones_count;
+		}
+	}
+	return ones_count;
+}
+
+int CountOnes(unsigned char Number)
+{
+	unsigned char mask=0x80;
+	unsigned char i;
+	int ones_count=0;
+	/*
+     * start looping from index n-1 to 0 and check every bit
+     * if it is equals to one increment ones_count
+     * if it is zero do nothing
+     */
+	for(i=0;i<8;i++)
+	{
+		if((Number<<i) & mask)
+		{
+			++ones_count;
+		}
+	}
+	return ones_count;
+}
+
+void count1s0s(int N)
+{
+
+    int count0 = 0, count1 = 0;
+
+    while (N > 0) {
+ 
+        // If current bit is 1
+        if (N & 1) {
+            count1++;
+        }
+ 
+        // If current bit is 0
+        else {
+            count0++;
+        }
+ 
+        N = N >> 1;
+    }
+ 
+    printf("Count of 0s in N is %d\n", count0);
+    printf("Count of 1s in N is %d\n", count1);
+}
+
+---------------------------------------------------------------------------------
+
+Write a C function that return 0 if a given number is a power of 3,
+otherwise return 1
+
+#include <stdio.h>
+
+int IsPowerOfThree(unsigned int Number)  //lw of 2
+{
+	if((Number == 1) || (Number == 0))
+	{
+		return 1;
+	}
+	else
+	{
+		while(1)
+		{
+			if((Number % 3) == 0)//%2
+			{
+
+				if(Number == 3)//2
+				{
+					return 0;
+				}
+				Number = Number / 3;//2
+			}
+			else
+			{
+				return 1;
+			}
+		}
+	}
+}
+
+---------------------------------------------------------------------------------
+Write a C function that use the bubble sort algorithm to sort
+an integer array in ascending order
+
+
+#include <stdio.h>
+void bubble_sort(int a[], int n) {
+    int i = 0, j = 0, tmp;
+
+    for (i = 0; i < n; i++) {   // loop n times - 1 per element
+
+        for (j = 0; j < n - i - 1; j++) { // last i elements are sorted already
+
+            if (a[j] > a[j + 1]) {  // swop if order is broken
+                tmp = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = tmp;
+            }
+        }
+    }
+}
+
+---------------------------------------------------------------------------------
+
+Write a C function that use the selection sort algorithm to sort
+an integer array in ascending order
+
+#include <stdio.h>
+
+void selection_sorting(int array[],const int size)
+{
+    int i,j,min,temp;
+    for(i=0;i<size-1;i++)
+    {
+	/* Assume that the current position contains the smallest number */
+        min=i;
+	/* Loop to get the position of smallest number in the array start from position i to the end of the loop */
+        for(j=i+1;j<size;j++)
+	{
+            if(array[min]>array[j])
+		{
+			min=j;
+		}
+        }
+	/* Swap value between the current postion and the smallest position */
+        temp = array[i];
+        array[i] = array[min];
+        array[min] = temp;
+    }
+}
+
+---------------------------------------------------------------------------------
+
+Write a C function to return the index of FIRST occurrence of a
+number in a given array.
+
+#include <stdio.h>
+
+int Linear_Search_Find_First(int Array_size,int *Array,int Item)
+{
+    int i;
+    for(i=0;i<Array_size;i++)
+	{
+        if(Item==Array[i])
+		{
+			/* Element is found return the array index */
+			return (i);
+		}
+    }
+    return -1; /* element not found */
+}
+
+---------------------------------------------------------------------------------
+
+Write a C function to return the index of LAST occurrence of a
+number in a given array
+
+int Linear_Search_Find_Last(int Array_size, int Array[],int Item)
+{
+    int i;
+	int index = -1; /* assume the element not exist in the array */
+
+    for(i=0;i<Array_size;i++)
+	{
+        if(Item==Array[i])
+		{
+			/* Index will contain the array index of the last time the element found in the array */
+			index = i;
+		}
+    }
+	/* return the last value of the index variable */
+    return index;
+}
+
+---------------------------------------------------------------------------------
+
+#include<stdio.h>
+
+void remove_all_except_alphabet(char str[])
+{
+	int i, j;
+    for(i = 0; str[i] != '\0'; ++i)
+    {
+        while ( !((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z')) &&  (str[i] != '\0') )
+        {
+        	/* Enter here in case the element is not alphabet and it is not equals to null */
+            for(j = i; str[j] != '\0'; ++j)
+            {
+				/* remove this not alphabet character by making each element equals to the value of the next element */
+                str[j] = str[j+1];
+            }
+        }
+    }
+}
+
+---------------------------------------------------------------------------------
+
+Write a C function that return the count of the longest
+consecutive occurrence of a given number in an array.
+Example:
+Array={1,2,2,3,3,3,3,4,4,4,4,3,3,3} and searching for 3  result = 4
+
+#include <stdio.h>
+
+#define ARR_SIZE 15
+
+int FindLongestConsecutive(int Array_size,int * Array,int Number)
+{
+	int i;
+	int occur_count = 0;
+	int longest_count = 0;
+	for(i=0;i<Array_size;i++)
+	{
+		if(Number == Array[i])
+		{
+			/* Increment the current consecutive count (occur_count) each time the Number is found */
+			occur_count++;
+			
+			/* Compare the current consecutive count (occur_count) with the logest consecutive count (longest_count) */
+			if(occur_count > longest_count)
+			{
+				longest_count = occur_count;
+			}
+		}
+		else
+		{
+			/* Clear the occur_count as the consecutive count is failed */
+			occur_count = 0;
+		}
+	}
+	return longest_count;
+}
+
+---------------------------------------------------------------------------------
+
+compare if equal
+
+#include <stdio.h>
+
+#define ARR_SIZE 5
+
+int CompareArray(int Array_size,int * Array1,int * Array2)
+{
+	int i;
+	for(i=0;i<Array_size;i++)
+	{
+		if(Array1[i] != Array2[i])
+		{
+			/* if only one element in Array1 does not match the corresponding element in Array2 return 1 */
+			return 1;
+		}
+	}
+	/* both arrays are identical retrun 0*/
+	return 0;
+}
+---------------------------------------------------------------------------------
+
+remove repeated number in sorted array
+
+#include <stdio.h>
+
+#define ERROR 0
+#define SUCCESS 1
+
+/* Function to remove duplicate elements, This function returns new size of modified array */
+int removeDuplicates(int arr_old[], int n_old, int arr_new[], int *n_new)
+{
+	int i=0;
+
+    /* Return, if array is empty */
+    if (n_old==0)
+        return ERROR;
+
+    for (i=0 ; i<n_old-1 ; i++)
+    {
+    	/* If current element is not equal to next element then store that current element in the new array */
+        if (arr_old[i] != arr_old[i+1])
+        {
+        	arr_new[*n_new] = arr_old[i];
+        	(*n_new)++;
+        }
+
+    }
+
+    /* Store the last element as whether it is unique or repeated, it hasn't stored previously */
+    arr_new[*n_new] = arr_old[i];
+    (*n_new)++;
+
+    return SUCCESS;
+}
+---------------------------------------------------------------------------------
+5th root
+
+int n=0;
+while(n*n*n*n*n <= x)
+{
+	n++
+}
+return n-1;
+---------------------------------------------------------------------------------
+C function to get the repeated number in array contains 101 elements and the elements
+values from 1 to 100.
+
+5aly 3andak sum =0
+W e3ml for loop w kol iteration e3mel sum+=arr[i]-(i+1)
+Haytba2alak el raqam el metkarar
+
+int x[101];
+
+    int sum = 0;
+
+    for(int i = 0 ; i < 15 ; i++)
+    {
+
+        cin>>x[i];
+    }
+
+
+
+    for(int i = 0 ; i < 15 ; i++)
+    {
+
+        sum += x[i]-(i+1);
+    }
+
+
+    cout<<sum+15;
+
+--------------------------------------------------------------------
+given int we want value of 4th LSB
+
+int fourthbit (int num)
+{
+	return ((num & 0x00000008)>>3);
+}
+--------------------------------------------------------------------
+max no of zeros between 2 ones
+
+
+
+#include <stdio.h>
+
+int main( void )
+{
+	// Receiving a number:
+	int n;
+	printf("Enter a number: ");
+	scanf("%d", &n);
+
+	// variables:
+	int count = 0;
+	int countFlag = 0;
+	int max = 0;
+
+	// loop until number equals zero
+	// and in every loop delete 
+	// the rightmost bit:
+	for( ; n > 0; n >>= 1 )
+	{
+		// if the rightmost bit is one:
+		if( n % 2 )
+		{
+			// set maximum:
+			if( count > max ) 
+				max = count;
+
+			// restart count:
+			count = 0;
+
+			// raise the count flag:
+			countFlag = 1;
+		}
+		// else if it's a zero and count flag
+		// is raised, increment count:
+		else if ( countFlag )
+			count++;
+	}
+
+	printf("Max. number of zeros between two ones is %d\n", max);
+
+	printf("\n");
+	return 0;
+}
+
+
+
+
+
+int printzeros(unsigned int num)
+{
+	unsigned int i,j,mask=0x80000000;
+	unsigned int count=0,max_count=0;
+	
+	for(i=0;i<32;i++)
+	{
+		if((num << i) & mask)
+		{
+			if(count > max_count)
+			{
+				max_count = count;
+			}
+			count=0;
+			break;
+		}
+		else
+		{
+			count++;
+		}
+	}
+	return max_count;
+}
+--------------------------------------------------------------------
+
+clear a bit
+
+u32 clearbit (u32 num, u32 bit)
+{
+	if(bit >= (sizeof(num)*8)//(bit >=32)
+	{
+	    return num;
+	}
+	else
+	{
+		return (num & ~(1ul<<bit));
+	}
+}
+--------------------------------------------------------------------
+given a string get last 2 letter "bat" retun "t a"
+
+char arr[3];
+
+char* lastletters(char* word)
+{
+	char *ptr = word;
+	while( ptr != '\0')
+	{
+		ptr++;
+	}
+	arr[0] = *(--ptr);
+	arr[1] = ' ';
+	arr[2] = *(--ptr);	
+}
+--------------------------------------------------------------------
+
+int addnumbers (float a,float b)
+{
+	return (int)(a+b);
+}
+--------------------------------------------------------------------
+binary search 
+
+int binary_search (int* arr, size, item)sorted
+{
+	int mid ,first=0, last=size-1;
+	while(first <= last)
+	{
+		mid = first + (last - first)/2;
+		if(arr[mid] == item)
+		{
+			return mid;
+		}
+		if(arr[mid] < item)
+		{
+			first =mid + 1;
+		}
+		else
+		{
+			last =mid-1;
+		}
+		
+	}
+	retrun -1;
+}
+
+--------------------------------------------------------------------
+
+prime number
+
+void prime (num)
+{
+	int i;
+	for(i=2;i<(num/2);i++)
+	{
+		if(num % i == 0)
+		{
+			return 0;//notprime
+		}
+	}
+	return 1;//prime
+
+}
+---------------------------------------------------------------------
+int x[100];   freq array 3lashan nshof mn 0 le max 200 anhy rakm atkrar aktar
+    
+    int f[201]={0};
+    
+    for(int i = 0 ; i < 15 ; i++)
+    {
+        cin>>x[i];
+        
+        f[ x[i] ]++;
+        
+    }
+------------------------------------------------------------------------
+*
+**
+***
+****
+*****
+int i,j,n=5;
+for(i=1;i<=n;i++)
+{
+	for(j=n-i;j<n;j++)
+	{
+		printf("*");
+	}
+	printf("\n");
+}
+
+------------------------------------------------------------------------
+*****
+****
+***
+**
+*
+int i,j,n=5;
+
+for(i=1;i<=n;i++)
+{
+	for(j=i;j<=n;j++)
+	{
+		printf("*");
+	}
+	printf("\n");
+}
+ 
+_____________________________________________________________________________
+    *
+   ***
+  *****
+ *******
+*********
+
+	  int i, j, row,n;
+	
+	printf("Enter number of rows: ");
+   	scanf("%d",&n);
+  	printf("\n");
+	
+	for(row=1;row<=n;row++)
+	{
+		
+		for(i=row;i<n;i++) printf(" ");
+		
+		for(j=0;j<((2*row)-1);j++) printf("*");
+
+		printf("\n");
+	}
+---------------------------------------------------------------------------------------
+*********
+ *******
+  *****
+   ***
+    *
+	int i, j, rows,n;
+
+    printf("Enter number of rows: ");
+    scanf("%d", &n);
+
+    for(rows=1; rows<=n; rows++)
+    {
+
+        for(i=1; i<rows; i++)
+        {
+            printf(" ");
+        }
+
+        for(j=1; j<=(n*2 - (2*rows-1)); j++)
+        {
+         
+                printf("*");
+          
+        }
+
+        printf("\n");
+    }
+---------------------------------------------------------------------------------------
+    *
+   * *
+  *   *
+ *     *
+*********
+ int i, j, rows,n;
+
+    printf("Enter number  : ");
+    scanf("%d", &n);
+
+    for(rows=1; rows<=n; rows++)
+    {
+
+        for(i=rows; i<n; i++)
+        {
+            printf(" ");
+        }
+
+        for(j=1; j<=(2*i-1); j++)
+        {
+
+            if(rows==n || j==1 || j==(2*rows-1))
+            {
+                printf("*");
+            }
+            else
+            {
+                printf(" ");
+            }
+        }
+
+        printf("\n");
+    }
+---------------------------------------------------------------------------------------
+*********
+ *     *
+  *   *
+   * *
+    *
+    int i, j, rows,n;
+
+    printf("Enter number of rows: ");
+    scanf("%d", &n);
+
+    for(rows=1; rows<=n; rows++)
+    {
+
+        for(i=1; i<rows; i++)
+        {
+            printf(" ");
+        }
+
+        for(j=1; j<=(n*2 - (2*rows-1)); j++)
+        {
+         
+            if(rows==1 || j==1 || j==(n*2 - (2*rows - 1)))
+            {
+                printf("*");
+            }
+            else
+            {
+                printf(" ");
+            }
+        }
+
+        printf("\n");
+    }
+---------------------------------------------------------------------------------------
+palindrome pyramid
+
+	int i,j,k,l,n;
+	printf("Enter the number of rows : ");
+	scanf("%d",&n);
+	for(i = 1; i <= n; i++)
+	{
+		for(k = 1; k <= i; k++)
+		{
+		printf("%d ",k);
+		}
+		for(l = i-1; l >= 1; l--)
+		{
+		printf("%d ",l);
+		}
+		printf("\n");
+	}
+-----------------------------------------------------------------------------------------
+*****
+*   *			hollow square
+*   *
+*   *
+*****
+
+int main()
+{
+    int i, j, N;
+    printf("Enter number of rows: ");
+    scanf("%d", &N);
+
+    for(i=1; i<=N; i++)
+    {
+
+        for(j=1; j<=N; j++)
+        {
+            if(i==1 || i==N || j==1 || j==N)
+            {
+                printf("*");
+            }
+            else
+            {
+                printf(" ");
+            }
+        }
+
+        printf("\n");
+    }
+
+------------------------------------------------------------------------------------
+solid square
+*****
+*****
+*****
+*****
+*****
+
+int i, j, N;
+
+    printf("Enter number of rows: ");
+    scanf("%d", &N);
+
+    for(i=1; i<=N; i++)
+    {
+
+        for(j=1; j<=N; j++)
+        {
+         
+            printf("*");
+        }
+
+        printf("\n");
+    }
+------------------------------------------------------------------------------------
+solid rectangle
+**********
+**********
+**********
+**********
+**********
+
+int i, j, rows, columns;
+
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
+    printf("Enter number of columns: ");
+    scanf("%d", &columns);
+
+    for(i=1; i<=rows; i++)
+    {
+      
+        for(j=1; j<=columns; j++)
+        {
+          
+            printf("*");
+        }
+        
+        printf("\n");
+    }
+
+
+---------------------------------------------------------------------------------------
+hollow rectangle
+**********
+*        *
+*        *
+*        *
+**********
+
+    int i, j, rows, columns;
+
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
+    printf("Enter number of columns: ");
+    scanf("%d", &columns);
+
+    for(i=1; i<=rows; i++)
+    {
+
+        for(j=1; j<=columns; j++)
+        {
+            if(i==1 || i==rows || j==1 || j==columns)
+            {
+               
+                printf("*");
+            }
+            else
+            {
+                printf(" ");
+            }
+        }
+
+      
+        printf("\n");
+    }
+---------------------------------------------------------------------------------
+X shape
+#include <stdio.h>
+
+int main()
+{
+    int row, col, N;
+    int count;
+
+    printf("Enter N: ");
+    scanf("%d", &N);
+
+    count = N * 2 - 1;
+
+    for(row=1; row<=count; row++)
+    {
+        for(col=1; col<=count; col++)
+        {
+            if(col==row || (col==count - row + 1))
+            {
+                printf("*");
+            }
+            else
+            {
+                printf(" ");
+            }
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+-----------------------------------------------------------------------
+reverse array
+
+void rev (int *arr,int size)
+{
+	int start=0;
+	int end = size-1;
+	
+	while(start<end)
+	{
+		arr[start] = arr[start] ^ arr[end];
+		
+		arr[end]   = arr[start] ^ arr[end];
+		
+		arr[start] = arr[start] ^ arr[end];
+		
+		start++;
+		end--;
+	}
+	
+	
+}
+
+void rvereseArray(int arr[], int start, int end)
+{
+    int temp;
+    while (start < end)
+    {
+        temp = arr[start];   
+        arr[start] = arr[end];
+        arr[end] = temp;
+        start++;
+        end--;
+    }   
+}     
+
+reverse str
+
+#include<stdio.h>
+#include<string.h>
+
+void reverse_string(char s[])
+{
+	int i = 0, j;
+	char temp;
+	j = strlen(s) - 1; a3rf size el str we batr7 1 3;ashan el \0
+	
+	/* null will remained in the same place just start swapping the array element */
+	while (i < j)
+	{
+		temp = s[i];
+		s[i] = s[j];
+		s[j] = temp;
+		i++;
+		j--;
+	}
+}
+
+--------------------------------------------------------------------------------------------------
+reverse a number
+
+int rem,rev=0,n=134;
+
+while(n != 0)
+{
+	rem = n % 10;
+	
+	rev = rev * 10 + rem ;
+	
+	n /= 10;
+}
+
+printf("%d",rev);
+--------------------------------------------------------------------------------------------------
+check over flow
+
+#include <stdio.h>
+
+
+
+unsigned char function(unsigned char X , unsigned char Y)
+{
+    
+    if(((unsigned short)X+(unsigned short)Y) > 255)
+    {
+        return 0 ;
+    }
+    else
+    {
+
+    return X+Y ;
+
+    }
+}
+
+
+int main()
+{
+    unsigned char x=120;
+    unsigned char y=100;
+    unsigned char z ;
+    
+    z = function(y,x);
+
+    printf("%d",z);
+
+    return 0;
+
+}

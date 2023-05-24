@@ -1,0 +1,7 @@
+print("Hello, My name is Moaz Mohamed Romih.")
+print("I was born in 11/01/1999.")
+print("I'm an ELectronics & Communication Engineer.")
+print("I've graduated from Zagazig University in July 2021.")
+print("I've joined army for 14 months from October 2021 to December 2022.")
+print("I've spend a few weeks to restudy some stuff then applied to joined the ITI embedded systems track.")
+print("I got accepted and I've been here for a few months now.")
