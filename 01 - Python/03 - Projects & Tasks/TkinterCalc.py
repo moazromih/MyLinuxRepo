@@ -8,7 +8,7 @@ def mult(x,y):
 def div(x,y):
     return x/y
 
-
+reset = 1
 pressedNum = 1
 finalResult = 0
 operator = ''
@@ -21,6 +21,8 @@ def resetCalc():
     global operator
     global num1
     global num2
+    global reset
+    reset = 1
     pressedNum = 1
     finalResult = 0
     operator = ''
@@ -33,12 +35,26 @@ def resetCalc():
 def pressNum(x):
     global num1
     global num2
+    global reset
+    if reset == 1:
+        resetCalc()
+    reset = 0
     Result.config(state= 'normal')
     Result.insert('end',x)
     if (pressedNum == 1):
         num1 += x
+        if x == '.' and num1.count('.') > 1 :
+            resetCalc()
+            Result.config(state= 'normal')
+            Result.insert('end','INVALID!')
+            Result.config(state= 'disabled')
     elif (pressedNum == 2):
         num2 += x
+        if x == '.' and num2.count('.') > 1 :
+            resetCalc()
+            Result.config(state= 'normal')
+            Result.insert('end','INVALID!')
+            Result.config(state= 'disabled')
     print(num1,num2)
     Result.config(state= "disabled")
 
@@ -60,6 +76,7 @@ def pressOp(x):
 def pressEqual():
     global pressedNum
     global finalResult
+    global reset
     Result.config(state= 'normal')
     pressedNum = 1
     print(num1,operator,num2)
@@ -74,6 +91,7 @@ def pressEqual():
     Result.insert('end',' = ')
     Result.insert('end',str(finalResult))
     Result.config(state= "disabled")
+    reset = 1
 
 
 
